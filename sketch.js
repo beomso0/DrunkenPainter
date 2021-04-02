@@ -158,10 +158,10 @@ function limitedLine(x, y, px, py, pickedRGB, weight) {
 // 이미지 저장 함수
 function saveFile() {
     let myImage = get(95, 34, 300, 428);
-    save(myImage);
+    save(myImage, "my_image.jpg");
 }
 
 //초기 알림 함수
 function makeAlert() {
-    alert("크롬 전체화면으로 이용해주세요");
+    alert("크롬 전체화면으로 이용하는 것을 권장해요");
 }
