@@ -12,7 +12,7 @@ let weightSlider;
 let modeName = "toPenMode";
 
 //알림창 노출
-// makeAlert();
+makeAlert();
 
 //배경 및 커서 이미지 로드
 function preload() {
