@@ -9,7 +9,7 @@ let clicked = false;
 let colorOrNot = true;
 let weightSlider;
 
-makeAlert();
+// makeAlert();
 
 function preload() {
     image_canvas = loadImage('./canvas.jpg');
@@ -26,16 +26,16 @@ function setup() {
     // fill(0);
     // text('COLOR PICKER', 550, 200)
     pickedColor = createColorPicker('rgb(182,103,197)');
-    pickedColor.position(550, 160);
+    pickedColor.position(730, 130);
 
     //저장 버튼 만들기 
     button = createButton('DOWNLOAD');
-    button.position(550, 250);
+    button.position(620, 264);
     button.mousePressed(saveFile);
 
     //strokeweight slider
     weightSlider = createSlider(1, 50, 6);
-    weightSlider.position(550, 350);
+    weightSlider.position(788, 197);
     noCursor();
 }
 
