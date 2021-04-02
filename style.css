@@ -6,4 +6,42 @@ body {
 
 canvas {
     display: block;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+}
+
+.notice {
+    position: absolute;
+    font-size: 1pt;
+    top: 0px;
+    /* left: 500px; */
+}
+
+h1 {
+    position: absolute;
+    top: -20px;
+    left: 160px;
+}
+
+h2 {
+    position: absolute;
+    color: black;
+    font-size: 12pt;
+    left: 550px;
+    top: 120px;
+}
+
+h3 {
+    position: absolute;
+    color: black;
+    font-size: 12pt;
+    left: 550px;
+    top: 310px;
+}
+
+.guide {
+    position: relative;
+    left: 700px;
+    top: 150px;
 }

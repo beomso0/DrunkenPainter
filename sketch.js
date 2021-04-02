@@ -9,6 +9,7 @@ let clicked = false;
 let colorOrNot = true;
 let weightSlider;
 
+makeAlert();
 
 function preload() {
     image_canvas = loadImage('./canvas.jpg');
@@ -19,18 +20,26 @@ function preload() {
 
 function setup() {
     cnvs = createCanvas(500, 500);
-    button = createButton('DOWNLOAD');
-    button.position(550, 300);
-    button.mousePressed(saveFile);
+    background(image_canvas);
+    //colorpicker 만들기
+    // textSize(30);
+    // fill(0);
+    // text('COLOR PICKER', 550, 200)
     pickedColor = createColorPicker('rgb(182,103,197)');
-    pickedColor.position(550, height / 2);
+    pickedColor.position(550, 160);
+
+    //저장 버튼 만들기 
+    button = createButton('DOWNLOAD');
+    button.position(550, 250);
+    button.mousePressed(saveFile);
+
+    //strokeweight slider
     weightSlider = createSlider(1, 50);
     weightSlider.position(550, 350);
     noCursor();
 }
 
 function draw() {
-
     background(image_canvas);
 
     // 물감 및 검은 직선 그리기
@@ -130,4 +139,8 @@ function limitedLine(x, y, px, py, pickedRGB, weight) {
 function saveFile() {
     let myImage = get(95, 34, 300, 428);
     save(myImage);
+}
+
+function makeAlert() {
+    alert("크롬 전체화면으로 이용해주세요");
 }
