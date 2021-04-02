@@ -1,3 +1,4 @@
+//변수 선언
 let randomX;
 let randomY;
 let lineRandomX;
@@ -8,23 +9,23 @@ let pickedColor;
 let clicked = false;
 let colorOrNot = true;
 let weightSlider;
+let modeName = "toPenMode";
 
-makeAlert();
+//알림창 노출
+// makeAlert();
 
+//배경 및 커서 이미지 로드
 function preload() {
     image_canvas = loadImage('./canvas.jpg');
     image_hand = loadImage('./real_hand.png');
 }
 
 
-
 function setup() {
     cnvs = createCanvas(500, 500);
     background(image_canvas);
-    //colorpicker 만들기
-    // textSize(30);
-    // fill(0);
-    // text('COLOR PICKER', 550, 200)
+
+    //color picker 생성
     pickedColor = createColorPicker('rgb(182,103,197)');
     pickedColor.position(730, 130);
 
@@ -39,8 +40,14 @@ function setup() {
     noCursor();
 }
 
+
 function draw() {
     background(image_canvas);
+
+    //펜 <-> 색칠 모드 전환 버튼 만들기
+    button2 = createButton(modeName);
+    button2.position(965, 133);
+    button2.mousePressed(colorPenChange);
 
     // 물감 및 검은 직선 그리기
     circleAndLineArray.forEach(function(item) {
@@ -57,19 +64,19 @@ function draw() {
         randomY = mouseY - 20 + random(-10, 10);
     }
 
-    if (colorOrNot == true) {
+
+    if (colorOrNot == true) { // 색 모드 -> arraies for circle을 추가
         push();
         translate(randomX, randomY);
         image(image_hand, 0, 0, handsize, handsize);
         pop();
-    } else {
+    } else { // 펜 모드 -> 손 고정, arraies for line을 main circleAndLineArray에 추가
         makeLineArray();
         image(image_hand, mouseX, mouseY, handsize, handsize);
-    } //손 이미지 커서
-
+    }
 }
 
-
+//색 모드 이미지의 어레이 생성
 function mousePressed() {
     if (colorOrNot == true) {
         let i = 3
@@ -80,7 +87,14 @@ function mousePressed() {
     }
 }
 
+//펜 모드 이미지의 어레이 생성
+function makeLineArray() {
+    if (mouseIsPressed) {
+        circleAndLineArray.push([mouseX + 10, mouseY + 35, pmouseX + 10, pmouseY + 35, 'line', pickedColor.value(), weightSlider.value()]);
+    }
+}
 
+// 펜 <-> 색 모드 전환
 function keyPressed() {
     if (key == 'c') {
         colorOrNot = !colorOrNot;
@@ -88,14 +102,17 @@ function keyPressed() {
     }
 }
 
-
-function makeLineArray() {
-    if (mouseIsPressed) {
-        circleAndLineArray.push([mouseX + 10, mouseY + 35, pmouseX + 10, pmouseY + 35, 'line', pickedColor.value(), weightSlider.value()]);
+//버튼으로 펜-색 전환
+function colorPenChange() {
+    colorOrNot = !colorOrNot;
+    if (colorOrNot == true) {
+        modeName = "toPenMode"
+    } else {
+        modeName = "toColorMode"
     }
 }
 
-
+// 색칠 함수
 function makeArt(x, y, seed, pickedRGB) {
     noStroke();
     randomSeed(seed);
@@ -122,7 +139,7 @@ function makeArt(x, y, seed, pickedRGB) {
     randomSeed();
 }
 
-
+// 선 그리기 함수
 function limitedLine(x, y, px, py, pickedRGB, weight) {
 
     let pickedR = parseInt(pickedRGB.slice(1, 3), 16);
@@ -138,14 +155,13 @@ function limitedLine(x, y, px, py, pickedRGB, weight) {
     line(x, y, px, py);
 }
 
-
+// 이미지 저장 함수
 function saveFile() {
     let myImage = get(95, 34, 300, 428);
     save(myImage);
 }
 
+//초기 알림 함수
 function makeAlert() {
     alert("크롬 전체화면으로 이용해주세요");
 }
-
-seeViewport();

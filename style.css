@@ -52,6 +52,18 @@ h3 {
     top: 80px;
 }
 
+h4 {
+    /* background-color: aqua;
+    width: fit-content;
+    height: 50px;
+    border-radius: 10px; */
+    position: absolute;
+    color: black;
+    font-size: 12pt;
+    left: 240px;
+    top: 11px;
+}
+
 .guide {
     background-color: rgb(255, 132, 132);
     width: fit-content;
@@ -59,7 +71,7 @@ h3 {
     border-radius: 5px;
     position: absolute;
     /* left: 720px; */
-    top: 220px;
+    top: 210px;
 }
 
 section {
