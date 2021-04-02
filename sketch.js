@@ -58,7 +58,10 @@ function draw() {
     }
 
     if (colorOrNot == true) {
-        image(image_hand, randomX, randomY, handsize, handsize);
+        push();
+        translate(randomX, randomY);
+        image(image_hand, 0, 0, handsize, handsize);
+        pop();
     } else {
         makeLineArray();
         image(image_hand, mouseX, mouseY, handsize, handsize);
