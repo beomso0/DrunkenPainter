@@ -9,7 +9,7 @@ let clicked = false;
 let colorOrNot = true;
 let weightSlider;
 
-// makeAlert();
+makeAlert();
 
 function preload() {
     image_canvas = loadImage('./canvas.jpg');
