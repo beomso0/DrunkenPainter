@@ -14,7 +14,6 @@ makeAlert();
 function preload() {
     image_canvas = loadImage('./canvas.jpg');
     image_hand = loadImage('./real_hand.png');
-    image_download = loadImage('./download.png');
 }
 
 
@@ -34,7 +33,7 @@ function setup() {
     button.mousePressed(saveFile);
 
     //strokeweight slider
-    weightSlider = createSlider(1, 50);
+    weightSlider = createSlider(1, 50, 6);
     weightSlider.position(550, 350);
     noCursor();
 }
@@ -144,3 +143,9 @@ function saveFile() {
 function makeAlert() {
     alert("크롬 전체화면으로 이용해주세요");
 }
+
+function seeViewport() {
+    console.log(window.visualViewport.scale);
+}
+
+seeViewport();
