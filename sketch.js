@@ -17,6 +17,7 @@ function preload() {
 }
 
 
+
 function setup() {
     cnvs = createCanvas(500, 500);
     background(image_canvas);
