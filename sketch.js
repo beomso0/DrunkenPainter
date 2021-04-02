@@ -145,8 +145,4 @@ function makeAlert() {
     alert("크롬 전체화면으로 이용해주세요");
 }
 
-function seeViewport() {
-    console.log(window.visualViewport.scale);
-}
-
 seeViewport();
