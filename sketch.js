@@ -1,4 +1,5 @@
 //변수 선언
+
 let randomX;
 let randomY;
 let lineRandomX;
@@ -51,7 +52,7 @@ function draw() {
 
     // 물감 및 검은 직선 그리기
     circleAndLineArray.forEach(function(item) {
-        if (item[4] == 'circle') { // 클릭 좌표인 경우
+        if (item[4] == 0) { // 클릭 좌표인 경우
             makeArt(item[0], item[1], item[2], item[3]);
         } else { // 드래그 좌표인 경우
             limitedLine(item[0], item[1], item[2], item[3], item[5], item[6]);
@@ -81,7 +82,7 @@ function mousePressed() {
     if (colorOrNot == true) {
         let i = 3
         while (i < random(3, 9)) {
-            circleAndLineArray.push([randomX, randomY, random(1, 10000), pickedColor.value(), 'circle']);
+            circleAndLineArray.push([randomX, randomY, random(1, 10000), pickedColor.value(), 0]);
             i++;
         }
     }
@@ -90,7 +91,7 @@ function mousePressed() {
 //펜 모드 이미지의 어레이 생성
 function makeLineArray() {
     if (mouseIsPressed) {
-        circleAndLineArray.push([mouseX + 10, mouseY + 35, pmouseX + 10, pmouseY + 35, 'line', pickedColor.value(), weightSlider.value()]);
+        circleAndLineArray.push([mouseX + 10, mouseY + 35, pmouseX + 10, pmouseY + 35, 1, pickedColor.value(), weightSlider.value()]);
     }
 }
 
