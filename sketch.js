@@ -21,7 +21,6 @@ function preload() {
     image_hand = loadImage('./real_hand.png');
 }
 
-
 function setup() {
     cnvs = createCanvas(500, 500);
     background(image_canvas);
@@ -98,7 +97,7 @@ function makeLineArray() {
 // 펜 <-> 색 모드 전환
 function keyPressed() {
     if (key == 'c') {
-        colorOrNot = !colorOrNot;
+        colorPenChange();
         // console.log(colorOrNot);
     }
 }
@@ -160,6 +159,12 @@ function limitedLine(x, y, px, py, pickedRGB, weight) {
 function saveFile() {
     let myImage = get(95, 34, 300, 428);
     save(myImage, "my_image.jpg");
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status==200) {
+            console.log(xmlhttp.responseText);
+        }
+    }
 }
 
 //초기 알림 함수
